@@ -1,45 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Parallax App</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
 
-<html>
+        .banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: url('https://via.placeholder.com/1920x1080.png?text=Banner+Image');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: -1; /* Behind all other content */
+        }
 
-<style>
+        .section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
 
-  a {
-    color: orange;
-  }
+        .parallax {
+            background-image: url('https://via.placeholder.com/1920x1080.png?text=Parallax+Layer');
+            height: 150%;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            top: -25%;
+            width: 100%;
+            z-index: -1; /* Behind the content */
+        }
 
-</style>
+        .content {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px; /* Max width for larger screens */
+            width: 100%; /* Full width for mobile */
+        }
 
-<script src="https://aefendiyev-230529-131-demo.my.site.com/info/lightning/lightning.out.js"></script>
+        .section:nth-child(odd) {
+            background-color: #f6f2e8; /* Light cream */
+        }
 
-<div data-lightning-out="true"></div>
+        .section:nth-child(even) {
+            background-color: #e8d8b2; /* Cream */
+        }
 
-  <script>
+        /* Styling for the Lightning component container */
+        .lightning-component {
+            margin-top: 20px; /* Space between sections */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* Fill available space */
+        }
+    </style>
+</head>
+<body>
+    <div class="banner"></div>
 
-    const appName = 'c:myLightningOutApp';
-    const componentName = 'c:reverseinvoke';
-    const lightningEndpoint = 'https://aefendiyev-230529-131-demo.my.site.com/info';
-    const targetElement = document.querySelector("[data-lightning-out]");
-    const componentAttributes = {
+    <div class="section">
+        <div class="parallax"></div>
+        <div class="content">
+            <h1>Welcome to Our Sample App</h1>
+            <p>This is a simple example of a parallax scrolling effect. Enjoy the creamy colors and the smooth transitions as you scroll through this mobile-friendly design.</p>
+        </div>
+    </div>
 
-    };
+    <div class="section">
+        <div class="parallax"></div>
+        <div class="content">
+            <h1>Another Section</h1>
+            <p>Here you can add more content, images, or whatever you need. The parallax effect will create a beautiful experience as users scroll through the app.</p>
+        </div>
+    </div>
 
-    $Lightning.use(
+    <!-- Lightning Out Integration -->
+    <div class="section lightning-component">
+        <div data-lightning-out="true"></div>
+    </div>
+
+    <script src="https://aefendiyev-230529-131-demo.my.site.com/info/lightning/lightning.out.js"></script>
+    <script>
+        const appName = 'c:myLightningOutApp';
+        const componentName = 'c:reverseinvoke';
+        const lightningEndpoint = 'https://aefendiyev-230529-131-demo.my.site.com/info';
+        const targetElement = document.querySelector("[data-lightning-out]");
+        const componentAttributes = {};
+
+        $Lightning.use(
             appName,
             function (){
-              $Lightning.createComponent(
-                      componentName,
-                      componentAttributes,
-                      targetElement,
-                      function (cmp){
-                        console.log('lightning component created');
-                      }
-              );
+                $Lightning.createComponent(
+                    componentName,
+                    componentAttributes,
+                    targetElement,
+                    function (cmp){
+                        console.log('Lightning component created');
+                    }
+                );
             },
             lightningEndpoint
-    );
-
-
-  </script>
-
-
+        );
+    </script>
+</body>
 </html>
