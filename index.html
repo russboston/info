@@ -27,7 +27,6 @@
         }
 
         .section {
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -73,11 +72,22 @@
             justify-content: center;
             align-items: center;
             height: 100%; /* Fill available space */
+            width: 80%; /* Set width for account list block */
+            margin-left: auto; /* Center horizontally */
+            margin-right: auto; /* Center horizontally */
+            background-color: rgba(255, 255, 255, 0.9); /* Light background for elegance */
+            border-radius: 8px; /* Rounded corners for elegance */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            padding: 20px; /* Padding for inner content */
         }
     </style>
 </head>
 <body>
     <div class="banner"></div>
+
+    <div class="section lightning-component">
+        <div data-lightning-out="true"></div>
+    </div>
 
     <div class="section">
         <div class="parallax"></div>
@@ -93,11 +103,6 @@
             <h1>Another Section</h1>
             <p>Here you can add more content, images, or whatever you need. The parallax effect will create a beautiful experience as users scroll through the app.</p>
         </div>
-    </div>
-
-    <!-- Lightning Out Integration -->
-    <div class="section lightning-component">
-        <div data-lightning-out="true"></div>
     </div>
 
     <script src="https://aefendiyev-230529-131-demo.my.site.com/info/lightning/lightning.out.js"></script>
