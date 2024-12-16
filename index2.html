@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Parallax App</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        .banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: url('https://via.placeholder.com/1920x1080.png?text=Banner+Image');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: -1; /* Behind all other content */
+        }
+
+        .section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .parallax {
+            background-image: url('https://via.placeholder.com/1920x1080.png?text=Parallax+Layer');
+            height: 150%;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            top: -25%;
+            width: 100%;
+            z-index: -1; /* Behind the content */
+        }
+
+        .content {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px; /* Max width for larger screens */
+            width: 100%; /* Full width for mobile */
+        }
+
+        .section:nth-child(odd) {
+            background-color: #f6f2e8; /* Light cream */
+        }
+
+        .section:nth-child(even) {
+            background-color: #e8d8b2; /* Cream */
+        }
+
+        /* Styling for the Lightning component container */
+        .lightning-component {
+            margin-top: 20px; /* Space between sections */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* Fill available space */
+            width: 80%; /* Set width for account list block */
+            margin-left: auto; /* Center horizontally */
+            margin-right: auto; /* Center horizontally */
+            background-color: rgba(255, 255, 255, 0.9); /* Light background for elegance */
+            border-radius: 8px; /* Rounded corners for elegance */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            padding: 20px; /* Padding for inner content */
+        }
+    </style>
+</head>
+<body>
+    <div class="banner"></div>
+
+    <div class="section">
+        <div class="parallax"></div>
+        <div class="content">
+            <h1>Welcome To Our Sample App</h1>
+            <p>Hello and welcome to the application xyz. Enjoy your time here and let us know if you have any questions. Thank you very much.</p>
+        </div>
+    </div>
+
+    <div class="section lightning-component">
+        <div data-lightning-out="true"></div>
+    </div>
+
+    <div class="section">
+        <div class="parallax"></div>
+        <div class="content">
+            <h1>Thank you</h1>
+            <p>We appreciate your time, thank you so much. Hope you enjoyed your time here. Have fun and see you later. Thank you.</p>
+        </div>
+    </div>
+
+    <script src="https://aefendiyev-230529-131-demo.my.site.com/info/lightning/lightning.out.js"></script>
+    <script>
+        const appName = 'c:myLightningOutApp';
+        const componentName = 'c:reverseinvoke';
+        const lightningEndpoint = 'https://aefendiyev-230529-131-demo.my.site.com/info';
+        const targetElement = document.querySelector("[data-lightning-out]");
+        const componentAttributes = {};
+
+        $Lightning.use(
+            appName,
+            function (){
+                $Lightning.createComponent(
+                    componentName,
+                    componentAttributes,
+                    targetElement,
+                    function (cmp){
+                        console.log('Lightning component created');
+                    }
+                );
+            },
+            lightningEndpoint
+        );
+    </script>
+</body>
+</html>
